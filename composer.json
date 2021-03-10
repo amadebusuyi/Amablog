@@ -1,0 +1,6 @@
+{
+    "require": {
+        "swiftmailer/swiftmailer": "^6.0",
+        "php-curl-class/php-curl-class": "^8.7",
+    }
+}
