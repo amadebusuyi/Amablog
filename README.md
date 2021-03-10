@@ -1,7 +1,7 @@
 # Amablog
 A simple web app that counts the number of unique visitors, blog post views, and allow authenticated users to create and modify blog posts
 
-### Built with vanilla PHP, MySQL, JQuery, Javascript, CSS, HTML
+### Built with core PHP, MySQL, JQuery, Javascript, CSS, HTML
 
 ### To install
 - Have a web server that can run Linux, Apache, MySql and PHP (LAMP) installed
