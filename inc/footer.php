@@ -21,7 +21,8 @@
       <script src="<?php echo $path; ?>assets/vendor/node-waves/waves.min.js"></script>
       <script src="<?php echo $path; ?>assets/vendor/summernote/summernote.min.js"></script>
       <script src="<?php echo $path; ?>assets/vendor/notifier/dist/js/notifier.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+      <script src="<?php echo $path; ?>assets/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
+      <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> -->
       <script src="<?php echo $path; ?>assets/vendor/kato/dist/kato.js"></script>
       <script src="<?php echo $path; ?>assets/js/function.js"></script>
       <script src="<?php echo $path; ?>assets/js/main.js"></script>

@@ -100,6 +100,22 @@ else{
 
 		$pdo->close();
 	}
+
+	elseif(isset($_GET['delete_post'])){
+		$conn = $pdo->open();
+
+		try{
+			$query = $conn->prepare("DELETE from posts where slug = :slug");
+			$query->execute(["slug"=>$_GET['delete_post']]);
+			echo json_encode(["status"=>"success"]);
+		}
+		catch(PDOException $e){
+			echo json_encode(["status"=>"failed", "error"=>$e]);
+		}
+
+
+		$pdo->close();
+	}
 }
 
  ?>

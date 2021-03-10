@@ -212,6 +212,49 @@ $(function() {
             })
         }
     })
+
+    $(".delete-post").click(function(e){
+        e.preventDefault();
+        let slug = $(this).attr("href");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          showCancelButton: true,
+          confirmButtonColor: '#700895',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            let status = true;
+            $.get("controllers/blog/blog.php?delete_post="+slug, (data)=>{
+                data = JSON.parse(data);
+                if(data.status !== "success")
+                    status = false;
+            }).then(()=>{
+                if(status){
+                    Swal.fire(
+                      'Deleted!',
+                      'Your file has been deleted.',
+                      'success'
+                    ).
+                    then(()=>{
+                        setTimeout(()=>{
+                            location.reload();
+                        },3000);
+                    })   
+                }
+                else{
+                    Swal.fire(
+                      'Failed to delete!',
+                      'Your file could not be deleted.',
+                      'warning'
+                    )  
+                }
+
+            })
+          }
+        })
+    })
 });
 
 
