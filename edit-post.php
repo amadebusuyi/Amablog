@@ -32,6 +32,7 @@
                         $pdo->close();
                       ?>
                      <div class="form-inline">
+                        <span class="slug d-none"><?php echo $blog['slug']; ?></span>
                         <div class="form-group col-lg-6 col-md-6 title">
                            <input type="text" class="form-control" id="title" placeholder="Enter Title" onfocus="this.placeholder = 'Title goes here'" onblur="this.placeholder = 'Enter Title'" value="<?php echo $blog['title']; ?>">
                         </div>

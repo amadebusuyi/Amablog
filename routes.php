@@ -1,9 +1,12 @@
 <?php 
+// Application name
+$sitename = "Amablog";
+
 require "phpassets/functions.php";
 
 $url = $_SERVER['REQUEST_URI'];
 $link = explode("/", $url);
-$lch = is_present($link, "Skooleeo");
+$lch = is_present($link, $sitename);
 $l1 = $lch+1;
 $l2 =  $lch+2;
 

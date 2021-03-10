@@ -79,7 +79,7 @@ $(function() {
 
     $("#blog-post").summernote({
         placeholder: "Add blog post here...",
-        height: 300
+        height: 300, 
     });
 
     $("#createPost").click(function(e){
@@ -145,7 +145,9 @@ $(function() {
         var image = $("#image-link").val();
         var post = $("#blog-post").summernote("code");
         var summary = clipText(extractContent(post), 200);
-        
+        var slug = $(".slug").text();
+        console.log(slug);
+
         if(title.length < 5){
             $("#title").focus();
             return false;
@@ -166,8 +168,9 @@ $(function() {
             return false;
         }
 
-        $.post("controllers/blog/blog.php", {
+        $.post("../controllers/blog/blog.php", {
             update_post: true,
+            slug: slug,
             title: title,
             category: category,
             summary: summary,
@@ -177,13 +180,9 @@ $(function() {
         function(data){
             data = JSON.parse(data);
             if(data.status === "success"){
-                notifier.show('Amazing!', title+' added to blog posts', 'info', '', 5000);
-                $("#title").val("");
-                $("#image-link").val("");
-                $("#blog-post").summernote("code", "");
+                notifier.show('Amazing!', title+' updated', 'info', '', 5000);
             }
             else{
-                    
                 notifier.show('An error occured!', data.message, 'danger', '', 5000);
             }
         })

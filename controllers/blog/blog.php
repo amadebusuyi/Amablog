@@ -36,7 +36,32 @@ else{
 		$pdo->close();
 	}
 
-	if(isset($_GET['check_slug'])){
+	elseif(isset($_POST["update_post"])){
+		$conn = $pdo->open();
+
+		try{
+			$query = $conn->prepare("UPDATE posts set title = :title, image = :image, post = :post, summary = :summary, category = :category, created_by = :created_by where slug = :slug");
+			$query->execute([
+				"title" => trim($_POST['title']),
+				"image" => trim($_POST['image']),
+				"post" => trim($_POST['post']),
+				"slug" => trim($_POST['slug']),
+				"summary" => trim($_POST['summary']),
+				"category" => trim($_POST['category']),
+				"created_by" => $_SESSION['user_id'],
+			]);
+
+			echo json_encode(["status"=>"success", "message"=>"Post updated successfully"]);
+		}
+
+		catch(PDOException $e){
+			echo json_encode(["status"=>"failed", "message"=>"An error prevented updating of post", "error"=>$e]);
+		}
+
+		$pdo->close();
+	}
+
+	elseif(isset($_GET['check_slug'])){
 		$conn = $pdo->open();
 
 		$query = $conn->prepare("SELECT count(*) as count from posts where slug = :slug");

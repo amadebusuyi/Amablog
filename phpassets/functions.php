@@ -1,4 +1,7 @@
 <?php
+
+GLOBAL $sitename;
+
 function makeRand($len, $type = "alpha-num"){
 	$result = "";
     $chars = "0123456789abcdefghijklmnpqrstuvwABCDEFGHIJKLMNPQRST";
@@ -58,7 +61,7 @@ function fetch_page($path){
 }
 
 function load_page($page, $title){
-  $title = "AMABLOG | ".$title;
+  $title = $title;
 
     include "inc/header.php";
 
